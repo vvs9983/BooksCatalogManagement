@@ -12,16 +12,37 @@ namespace BooksCatalogManagement.Gui
 {
     class Api
     {
+        private static volatile Api _instance;
+        private static object _syncRoot = new object();
         private HttpClient httpClient;
 
-        public Api()
+        private Api()
         {
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(@"http://localhost:51556/");
             httpClient.DefaultRequestHeaders.Accept.Clear();
         }
 
-        public async Task<Catalog> GetCatalog()
+        public static Api Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    lock (_syncRoot)
+                    {
+                        if (_instance == null)
+                        {
+                            _instance = new Api();
+                        }
+                    }
+                }
+
+                return _instance;
+            }
+        }
+
+        public async Task<Catalog> GetCatalogAsync()
         {
             string catalogContent = string.Empty;
 
