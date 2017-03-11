@@ -9,7 +9,7 @@ namespace BooksCatalogManagement.Api.Models
     [XmlRoot("catalog")]
     public class Catalog
     {
-        [XmlArray("book")]
+        [XmlElement("book")]
         public List<Book> BooksCatalog { get; set; }
     }
 }
