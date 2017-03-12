@@ -1,9 +1,5 @@
 ﻿using BooksCatalogManagement.Api.Models;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Xml.Serialization;
 
 namespace BooksCatalogManagement.Api.Repository
@@ -43,8 +39,7 @@ namespace BooksCatalogManagement.Api.Repository
             {
                 var xmlSerializer = new XmlSerializer(typeof(Catalog));
 
-                var c = xmlSerializer.Deserialize(stringReader) as Catalog;
-                return c;
+                return xmlSerializer.Deserialize(stringReader) as Catalog;
             }
         }
 

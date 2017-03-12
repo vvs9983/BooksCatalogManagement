@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace BooksCatalogManagement.Api.Models
@@ -10,6 +7,6 @@ namespace BooksCatalogManagement.Api.Models
     public class Catalog
     {
         [XmlElement("book")]
-        public List<Book> BooksCatalog { get; set; }
+        public List<Book> Books { get; set; } = new List<Book>();
     }
 }

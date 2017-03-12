@@ -1,12 +1,9 @@
 ﻿using BooksCatalogManagement.Api.Models;
+using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace BooksCatalogManagement.Gui
 {
@@ -66,11 +63,12 @@ namespace BooksCatalogManagement.Gui
 
         private Catalog Deserialize(string xml)
         {
-            using (var stringReader = new StringReader(xml))
+            using (TextReader stringReader = new StringReader(xml))
             {
-                var xmlSerializer = new XmlSerializer(typeof(Catalog));
+                var jsonSerializer = new JsonSerializer();
 
-                return xmlSerializer.Deserialize(stringReader) as Catalog;
+                var res = jsonSerializer.Deserialize(stringReader, typeof(Catalog)) as Catalog;
+                return res;
             }
         }
     }
