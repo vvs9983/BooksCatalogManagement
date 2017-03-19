@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BooksCatalogManagement.Gui
@@ -45,7 +46,7 @@ namespace BooksCatalogManagement.Gui
 
             try
             {
-                HttpResponseMessage httpResponseMessage = await httpClient.GetAsync("api/catalog");
+                var httpResponseMessage = await httpClient.GetAsync("api/catalog");
 
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
@@ -61,9 +62,22 @@ namespace BooksCatalogManagement.Gui
             return Deserialize(catalogContent);
         }
 
-        private Catalog Deserialize(string xml)
+        public async void SaveCatalogAsync(Catalog catalog)
         {
-            using (TextReader stringReader = new StringReader(xml))
+            try
+            {
+                var httpResponseMessage = await httpClient.PostAsJsonAsync("api/catalog", catalog);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private Catalog Deserialize(string json)
+        {
+            using (TextReader stringReader = new StringReader(json))
             {
                 var jsonSerializer = new JsonSerializer();
 

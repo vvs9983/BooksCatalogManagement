@@ -12,6 +12,14 @@ namespace BooksCatalogManagement.Gui
             _api = Api.Instance;
         }
 
-        public async Task<Catalog> GetCatalogAsync() => await _api.GetCatalogAsync();
+        public async Task<Catalog> GetCatalogAsync()
+        {
+            return await _api.GetCatalogAsync();
+        }
+
+        public void SaveCatalog(Catalog catalog)
+        {
+            _api.SaveCatalogAsync(catalog);
+        }
     }
 }

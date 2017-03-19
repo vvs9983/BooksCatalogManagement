@@ -35,14 +35,21 @@
             // 
             // dataGridViewCatalog
             // 
+            this.dataGridViewCatalog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewCatalog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
+            this.dataGridViewCatalog.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridViewCatalog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCatalog.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewCatalog.Name = "dataGridViewCatalog";
             this.dataGridViewCatalog.Size = new System.Drawing.Size(358, 199);
             this.dataGridViewCatalog.TabIndex = 0;
+            this.dataGridViewCatalog.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCatalog_CellValueChanged);
             // 
             // buttonSave
             // 
+            this.buttonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonSave.Enabled = false;
             this.buttonSave.Location = new System.Drawing.Point(12, 226);
             this.buttonSave.Name = "buttonSave";
@@ -50,6 +57,7 @@
             this.buttonSave.TabIndex = 1;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // Main
             // 

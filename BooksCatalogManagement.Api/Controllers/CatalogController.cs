@@ -1,7 +1,9 @@
 ﻿using BooksCatalogManagement.Api.Models;
 using BooksCatalogManagement.Api.Repository;
 using System.Net;
+using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace BooksCatalogManagement.Api.Controllers
 {
@@ -17,6 +19,12 @@ namespace BooksCatalogManagement.Api.Controllers
         public Catalog GetCatalog()
         {
             return _catalog;
+        }
+        
+        [HttpPost]
+        public void SaveCatalog(Catalog catalog)
+        {
+            BooksXmlRepository.Instance.SaveCatalog(catalog);
         }
     }
 }

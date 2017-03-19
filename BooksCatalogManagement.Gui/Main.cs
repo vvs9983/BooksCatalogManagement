@@ -22,5 +22,16 @@ namespace BooksCatalogManagement.Gui
             _catalog = await _logic.GetCatalogAsync();
             dataGridViewCatalog.DataSource = _catalog.Books;
         }
+
+        private void dataGridViewCatalog_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            buttonSave.Enabled = true;
+        }
+
+        private void buttonSave_Click(object sender, System.EventArgs e)
+        {
+            _logic.SaveCatalog(_catalog);
+            buttonSave.Enabled = false;
+        }
     }
 }
